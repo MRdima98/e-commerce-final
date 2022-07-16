@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Hotels</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'style.css' %}" />
+</head>
+<body>    
+  <div class="hero-banner" >
+    <div class="container">
+      <div class="row header">
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 top-nav ">
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 top-nav" >
+          <a href="index.html" class="links" >HOTELS</a>
+        </div>
+      </div>
+    </div>
+  </div>
+      
+  <div id="register" class="container register-width">
+    <form action="/your-name/" method="post">
+      {% for field in form %}
+        <div class="form-floating col-lg-6"> 
+          {{ field }}
+        </div>
+      {% endfor %}
+      <div class="form-floating col-lg-12">
+          <h4>Opzioni</h4>
+          <div class="col-lg-2">
+              <input type="checkbox">
+              <span>Piscina</span>
+          </div>
+          <div class="col-lg-2">
+              <input type="checkbox">
+              <span>Piscina</span>
+          </div>
+          <div class="col-lg-2">
+              <input type="checkbox">
+              <span>Piscina</span>
+          </div>
+          <div class="col-lg-2">
+              <input type="checkbox">
+              <span>Piscina</span>
+          </div>
+          <div class="col-lg-2">
+              <input type="checkbox">
+              <span>Piscina</span>
+          </div>
+          <div class="col-lg-2">
+              <input type="checkbox">
+              <span>Piscina</span>
+          </div>
+      </div>
+        <div class="col-lg-12">
+            <h4>Descrizione</h4>
+            <textarea maxlength='250' id="descrizione" class="form-control light-top-margin no-resize" rows="8" ></textarea>
+        </div>
+        <a id="btn" class="btn btn-lg btn-danger col-lg-4 col-lg-offset-1 light-top-margin" type="submit">Annulla</a>
+        <input type="submit" value="Inserisci" class="btn btn-lg btn-primary col-lg-4 col-lg-offset-2 light-top-margin">
+    </form>
+  </div>
+</body>
+</html> 

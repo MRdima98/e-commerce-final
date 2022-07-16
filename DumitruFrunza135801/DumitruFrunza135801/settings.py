@@ -55,7 +55,10 @@ ROOT_URLCONF = 'DumitruFrunza135801.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [Path.joinpath(BASE_DIR,"templates")],
+        'DIRS': 
+            [
+            Path.joinpath(BASE_DIR,"templates"),
+            Path.joinpath(BASE_DIR,"hotel","templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
