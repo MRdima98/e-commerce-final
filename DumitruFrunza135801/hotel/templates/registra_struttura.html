@@ -23,7 +23,8 @@
   </div>
       
   <div id="register" class="container register-width">
-    <form action="/your-name/" method="post">
+    <form action="." method="post"> 
+      {% csrf_token %}
       {% for field in form %}
         {% if field.help_text == 'Yes' %}
           <div class="form-floating col-lg-6"> 

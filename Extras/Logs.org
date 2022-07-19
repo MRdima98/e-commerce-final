@@ -1,3 +1,5 @@
-|Data|Tempo|
+|Data |Tempo   |
 |17-06|1h 30min|
-|Tot|1h 30min|
+|18-06|        |
+|19-06|        |
+|Tot  |1h 30min|

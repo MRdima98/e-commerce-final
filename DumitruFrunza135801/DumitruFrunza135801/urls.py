@@ -16,9 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from hotel.views import hotel_view,get_name
+from hotel.views import hotel_view,get_name,struttura
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('hotel/',get_name),
+    path('struttura/',struttura),
 ]

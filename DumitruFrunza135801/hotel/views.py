@@ -1,26 +1,22 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from .forms import NameForm
+from .forms import RawHotelForm
+from .models import Hotel
 
 # Create your views here.
 def hotel_view(request,*args,**kwargs):
     return render(request,"registra_struttura.html",{})
 
+def struttura(request, *args, **kwargs):
+    return render(request, "struttura.html",{})
+
 def get_name(request):
-    # if this is a POST request we need to process the form data
+    form = RawHotelForm()
     if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
-        form = NameForm(request.POST)
-        # check whether it's valid:
+        form = RawHotelForm(request.POST)
         if form.is_valid():
-            # process the data in form.cleaned_data as required
-            # ...
-            # redirect to a new URL:
-            return HttpResponseRedirect('/thanks/')
-
-    # if a GET (or any other method) we'll create a blank form
+            Hotel.objects.create(**form.cleaned_data)
     else:
-        form = NameForm()
-
+        form = RawHotelForm()
     return render(request, 'registra_struttura.html', {'form': form})

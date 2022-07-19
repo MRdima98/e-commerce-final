@@ -1,7 +1,6 @@
 from unicodedata import decimal
 from django.db import models
 
-# Create your models here.
 class Hotel(models.Model):
     name = models.TextField()
     IVA = models.TextField()
