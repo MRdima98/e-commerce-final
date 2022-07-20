@@ -30,6 +30,11 @@
           <div class="form-floating col-lg-6"> 
             {{ field }}
           </div>
+        {% elif field.help_text == 'Svaghi' %}
+          <div class="col-lg-12">
+            <h4>Svaghi</h4>
+            {{ field }}
+          </div>
         {% elif field.help_text == 'No' %}
         <div class="col-lg-12">
           <h4>Descrizione</h4>

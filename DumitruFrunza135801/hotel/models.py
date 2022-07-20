@@ -2,9 +2,10 @@ from unicodedata import decimal
 from django.db import models
 
 class Hotel(models.Model):
-    name = models.TextField()
-    IVA = models.TextField()
+    name   = models.TextField()
+    IVA    = models.TextField()
     street = models.TextField()
-    stars = models.IntegerField()
-    cost = models.IntegerField()
-    rooms = models.IntegerField()
+    stars  = models.DecimalField(max_digits=1, decimal_places=0)
+    cost   = models.DecimalField(max_digits=1000000, decimal_places=2)
+    rooms  = models.DecimalField(max_digits=1000, decimal_places=0)
+    free_time = models.TextField()
