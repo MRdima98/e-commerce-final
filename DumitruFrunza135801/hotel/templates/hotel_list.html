@@ -5,8 +5,8 @@
 {% endblock%}
 
 {% block content%}
-<div class='lg-col-2'>
-  <a href="/hotel" id="btn" class="btn btn-lg btn-primary light-bottom-margin center-icon">Torna indietro</a>
+<div class='col-lg-2'>
+  <a href="/hotel" id="btn" class="btn btn-md btn-primary light-bottom-margin center-icon">Torna indietro</a>
 </div>
 <table class="table">
   <thead>
@@ -20,7 +20,7 @@
   <tbody>
       {% for item in objects %}
       <tr>
-        <th scope="row">{{ item.id  }}</th>
+        <th scope="row">{{ forloop.counter }}</th>
         <td>{{ item.name }}</td>
         <td>
           <a href="/struttura/{{ item.id }}" id="btn" class="btn btn-md btn-primary">

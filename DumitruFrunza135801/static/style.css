@@ -15,7 +15,7 @@ body {
 .hero{
     height: 100vh;
     width: inherit;
-    background-image: url('resources/home-page-2.jpg');
+    background-image: url('image/home-page-2.jpg');
     background-size:     cover;                    
     background-repeat:   no-repeat;
     background-position: center center;

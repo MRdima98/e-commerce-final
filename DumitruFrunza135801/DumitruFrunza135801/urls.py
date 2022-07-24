@@ -17,9 +17,11 @@ from django.contrib import admin
 from django.urls import path
 
 from hotel.views import new_hotel, struttura, hotel_list, delete_hotel
+from home.views import home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', home),
     path('hotel/', new_hotel),
     path('struttura/<int:id>/', struttura),
     path('hotel/list', hotel_list),
