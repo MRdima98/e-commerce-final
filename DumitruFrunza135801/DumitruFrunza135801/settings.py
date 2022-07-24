@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'hotel',
+    'login',
+    'home',
 ]
 
 MIDDLEWARE = [
@@ -58,7 +60,9 @@ TEMPLATES = [
         'DIRS': 
             [
             Path.joinpath(BASE_DIR,"templates"),
-            Path.joinpath(BASE_DIR,"hotel","templates")],
+            Path.joinpath(BASE_DIR,"hotel","templates"),
+            Path.joinpath(BASE_DIR,"home","templates")
+            ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

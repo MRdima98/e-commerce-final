@@ -17,13 +17,17 @@ from django.contrib import admin
 from django.urls import path
 
 from hotel.views import new_hotel, struttura, hotel_list, delete_hotel
-from home.views import home
+from home.views import home, search
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
     path('', home),
+    path('search/',search),
+
     path('hotel/', new_hotel),
     path('struttura/<int:id>/', struttura),
     path('hotel/list', hotel_list),
     path('hotel/delete/<int:id>', delete_hotel, name='delete'),
+
 ]
