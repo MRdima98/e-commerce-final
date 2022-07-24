@@ -15,10 +15,14 @@ def struttura(request, id):
         obj = Hotel.objects.get(id=id)
     except Hotel.DoesNotExist:
         raise Http404
+    form = HotelForm(request.POST or None, instance=obj)
+    if form.is_valid():
+        form.save()
+        return redirect('/hotel/list')
     context = {
-        "object": obj
+        "form": form
     }
-    return render(request, "struttura.html", context)
+    return render(request, "registra_struttura.html", context)
 
 def hotel_list(request):
     obj = Hotel.objects.all()
