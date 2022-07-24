@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block header%}
+{% include 'navbar.html' %}
+{% endblock%}
+
+{% block content%}
+<div class='lg-col-2'>
+  <a href="/hotel" id="btn" class="btn btn-md btn-primary">Go back</a>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Hotel</th>
+      <th scope="col">Modifica</th>
+      <th scope="col">Elimina</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for item in objects %}
+      <tr>
+        <th scope="row">1</th>
+        <td>{{ item.name }}</td>
+        <td><a href="/struttura/{{ item.id }}" id="btn" class="btn btn-md btn-primary">Modifica</a></td>
+        <td><a href="delete/{{ item.id }}" id="btn" class="btn btn-md btn-danger">Elimina</a></td>
+      </tr>
+      {% endfor%}
+    </tbody>
+  </table>
+{% endblock%}

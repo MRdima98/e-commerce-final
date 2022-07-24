@@ -1,61 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Hotels</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+{% extends 'base.html' %}
 
-  {% load static %}
-  <link rel="stylesheet" href="{% static 'style.css' %}" />
-</head>
-<body>    
-  <div class="hero-banner" >
-    <div class="container">
-      <div class="row header">
-        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 top-nav ">
-        </div>
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 top-nav" >
-          <a href="index.html" class="links" >HOTELS</a>
-        </div>
-      </div>
-    </div>
-  </div>
+{% block header%}
+{% include 'navbar.html' %}
+{% endblock %}
       
-  <div id="register" class="container register-width">
-    <form action="." method="post"> 
-      {% csrf_token %}
-      {% for field in form %}
-        {% if field.help_text == 'Yes' %}
-          <div class="form-floating col-lg-6"> 
-            {{ field }}
-          </div>
-        {% elif field.help_text == 'Svaghi' %}
-          <div class="col-lg-12">
-            <h4>Svaghi</h4>
-            {{ field }}
-          </div>
-        {% elif field.help_text == 'No' %}
-        <div class="col-lg-12">
-          <h4>Descrizione</h4>
-          <textarea maxlength='250' id="descrizione" class="form-control light-top-margin no-resize" rows="8" ></textarea>
-        </div>
-        {% elif field.is_hidden %}
-        <div class="col-lg-12">
-          <h4>Opzioni</h4>
-        </div>
-        {% else %}
-        <div class="col-lg-2">
+{% block content %}
+  <form action="#" method="POST"> 
+    {% csrf_token %}
+    {% for field in form %}
+      {% if field.help_text == 'Yes' %}
+        <div class="form-floating col-lg-6"> 
           {{ field }}
-          {{ field.label_tag}}
         </div>
-        {% endif %}
-      {% endfor %}
-      <div class="form-floating col-lg-12">
-        <a id="btn" class="btn btn-lg btn-danger col-lg-4 col-lg-offset-1 light-top-margin" type="submit">Annulla</a>
-        <input type="submit" value="Inserisci" class="btn btn-lg btn-primary col-lg-4 col-lg-offset-2 light-top-margin">
+      {% elif field.help_text == 'Svaghi' %}
+        <div class="col-lg-12">
+          <h4>Svaghi</h4>
+          {{ field }}
+        </div>
+      {% elif field.help_text == 'No' %}
+      <div class="col-lg-12">
+        <h4>Descrizione</h4>
+        <textarea maxlength='250' id="descrizione" class="form-control light-top-margin no-resize" rows="8" ></textarea>
       </div>
-    </form>
-  </div>
-</body>
-</html> 
+      {% elif field.is_hidden %}
+      <div class="col-lg-12">
+        <h4>Opzioni</h4>
+      </div>
+      {% else %}
+      <div class="col-lg-2">
+        {{ field }}
+        {{ field.label_tag}}
+      </div>
+      {% endif %}
+    {% endfor %}
+    <div class="form-floating col-lg-12">
+      <a id="btn" class="btn btn-lg btn-danger col-lg-4 col-lg-offset-1 light-top-margin" type="submit">Annulla</a>
+      <input type="submit" value="Inserisci" class="btn btn-lg btn-primary col-lg-4 col-lg-offset-2 light-top-margin">
+    </div>
+  </form>
+{% endblock content %}

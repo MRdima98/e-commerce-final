@@ -16,10 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from hotel.views import hotel_view,get_name,struttura
+from hotel.views import new_hotel, struttura, hotel_list, delete_hotel
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hotel/',get_name),
-    path('struttura/',struttura),
+    path('hotel/', new_hotel),
+    path('struttura/<int:id>/', struttura),
+    path('hotel/list', hotel_list),
+    path('hotel/delete/<int:id>', delete_hotel, name='delete'),
 ]

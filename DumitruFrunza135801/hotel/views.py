@@ -1,23 +1,42 @@
+from gc import get_objects
 from multiprocessing import context
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from django.http import HttpResponse,Http404
 
-from .forms import RawHotelForm
+from .forms import HotelForm, RawHotelForm
 from .models import Hotel
 
 # Create your views here.
 def hotel_view(request,*args,**kwargs):
     return render(request,"registra_struttura.html",{})
 
-def struttura(request, *args, **kwargs):
-    return render(request, "struttura.html",{})
+def struttura(request, id):
+    try:
+        obj = Hotel.objects.get(id=id)
+    except Hotel.DoesNotExist:
+        raise Http404
+    context = {
+        "object": obj
+    }
+    return render(request, "struttura.html", context)
 
-def get_name(request):
+def hotel_list(request):
+    obj = Hotel.objects.all()
+    context = { "objects": obj }
+    return render(request, "hotel_list.html", context)
+
+def delete_hotel(request, id):
+    hotel = Hotel.objects.get(id=id)
+    hotel.delete()
+    return redirect('/hotel/list')
+
+def new_hotel(request):
     my_form = RawHotelForm()
     if request.method == 'POST':
         my_form = RawHotelForm(request.POST)
         if my_form.is_valid():
             Hotel.objects.create(**my_form.cleaned_data)
+            return redirect('/hotel/list')
         else:
             print("Dati non validi")
     context = { "form" : my_form }

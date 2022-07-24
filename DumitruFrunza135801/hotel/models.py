@@ -9,3 +9,5 @@ class Hotel(models.Model):
     cost   = models.DecimalField(max_digits=1000000, decimal_places=2)
     rooms  = models.DecimalField(max_digits=1000, decimal_places=0)
     free_time = models.TextField()
+
+    
