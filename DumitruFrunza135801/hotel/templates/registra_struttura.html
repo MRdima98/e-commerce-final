@@ -1,41 +1,43 @@
 {% extends 'base.html' %}
 
 {% block header%}
-{% include 'navbar.html' %}
+{% include 'blue_navbar.html' %}
 {% endblock %}
       
 {% block content %}
-  <form action="#" method="POST"> 
-    {% csrf_token %}
-    {% for field in form %}
-      {% if field.help_text == 'Yes' %}
-        <div class="form-floating col-lg-6"> 
-          {{ field }}
-        </div>
-      {% elif field.help_text == 'Svaghi' %}
+  <div class="container register-width">
+    <form action="#" method="POST"> 
+      {% csrf_token %}
+      {% for field in form %}
+        {% if field.help_text == 'Yes' %}
+          <div class="form-floating col-lg-6"> 
+            {{ field }}
+          </div>
+        {% elif field.help_text == 'Svaghi' %}
+          <div class="col-lg-12">
+            <h4>Svaghi</h4>
+            {{ field }}
+          </div>
+        {% elif field.help_text == 'No' %}
         <div class="col-lg-12">
-          <h4>Svaghi</h4>
-          {{ field }}
+          <h4>Descrizione</h4>
+          <textarea maxlength='250' id="descrizione" class="form-control light-top-margin no-resize" rows="8" ></textarea>
         </div>
-      {% elif field.help_text == 'No' %}
-      <div class="col-lg-12">
-        <h4>Descrizione</h4>
-        <textarea maxlength='250' id="descrizione" class="form-control light-top-margin no-resize" rows="8" ></textarea>
+        {% elif field.is_hidden %}
+        <div class="col-lg-12">
+          <h4>Opzioni</h4>
+        </div>
+        {% else %}
+        <div class="col-lg-2">
+          {{ field }}
+          {{ field.label_tag}}
+        </div>
+        {% endif %}
+      {% endfor %}
+      <div class="form-floating col-lg-12">
+        <a id="btn" class="btn btn-lg btn-danger col-lg-4 col-lg-offset-1 light-top-margin" type="submit">Annulla</a>
+        <input type="submit" value="Salva" class="btn btn-lg btn-primary col-lg-4 col-lg-offset-2 light-top-margin">
       </div>
-      {% elif field.is_hidden %}
-      <div class="col-lg-12">
-        <h4>Opzioni</h4>
-      </div>
-      {% else %}
-      <div class="col-lg-2">
-        {{ field }}
-        {{ field.label_tag}}
-      </div>
-      {% endif %}
-    {% endfor %}
-    <div class="form-floating col-lg-12">
-      <a id="btn" class="btn btn-lg btn-danger col-lg-4 col-lg-offset-1 light-top-margin" type="submit">Annulla</a>
-      <input type="submit" value="Salva" class="btn btn-lg btn-primary col-lg-4 col-lg-offset-2 light-top-margin">
-    </div>
-  </form>
+    </form>
+  </div>
 {% endblock content %}
