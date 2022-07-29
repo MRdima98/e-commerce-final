@@ -3,7 +3,12 @@ from django import forms
 from .models import Hotel
 
 class HotelForm(forms.ModelForm):
-    name      = forms.CharField(label=None , max_length =50, widget=forms.TextInput(attrs={'class': 'form-control base-height','placeholder':'Nome albergo'}), help_text='Yes')
+    name      = forms.CharField(label=None , max_length =50, 
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control base-height','placeholder':'Nome albergo'
+            }
+        ), help_text='Yes')
     IVA       = forms.CharField(label=None , max_length =15, widget=forms.TextInput(attrs={'class': 'form-control base-height','placeholder':'IVA'}), help_text='Yes')
     street    = forms.CharField(label=None , max_length =50, widget=forms.TextInput(attrs={'class': 'form-control base-height very-light-top-margin','placeholder':'Via'}), help_text='Yes')
     CAP       = forms.DecimalField(label=None , widget=forms.TextInput(attrs={'class': 'form-control base-height very-light-top-margin','placeholder':'CAP'}), help_text='Yes')

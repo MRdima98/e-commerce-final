@@ -23,7 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('', home),
-    path('search/',search),
+    path('search/<str:city>',search),
 
     path('hotel/', new_hotel),
     path('struttura/<int:id>/', struttura),
