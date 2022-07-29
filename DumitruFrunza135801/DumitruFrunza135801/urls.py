@@ -22,10 +22,10 @@ from home.views import home, search
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('', home),
-    path('search/<str:city>',search),
+    path('', home, name='home'),
+    path('search/<str:city>',search, name='search'),
 
-    path('hotel/', new_hotel),
+    path('hotel/', new_hotel, name='struttura'),
     path('struttura/<int:id>/', struttura),
     path('hotel/list', hotel_list),
     path('hotel/delete/<int:id>', delete_hotel, name='delete'),

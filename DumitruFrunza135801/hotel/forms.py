@@ -3,7 +3,7 @@ from django import forms
 from .models import Hotel
 
 class HotelForm(forms.ModelForm):
-    name      = forms.CharField(label=None , max_length =50, 
+    name = forms.CharField(label=None , max_length =50, 
         widget=forms.TextInput(
             attrs={
                 'class': 'form-control base-height','placeholder':'Nome albergo'
