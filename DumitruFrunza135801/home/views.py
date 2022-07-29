@@ -6,7 +6,7 @@ from hotel.models import Hotel
 
 def home(request, *args, **kwargs):
     form = SearchFrom()
-    if request.method == "GET":
+    if request.method == "GET": 
         form = SearchFrom(request.GET)
         if form.is_valid():
             return search(request, form.cleaned_data.get('city'))
