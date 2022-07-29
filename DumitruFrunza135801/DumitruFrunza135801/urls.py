@@ -27,7 +27,7 @@ urlpatterns = [
 
     path('hotel/', new_hotel, name='struttura'),
     path('struttura/<int:id>/', struttura),
-    path('hotel/list', hotel_list),
+    path('hotel/list', hotel_list, name="hotel_list"),
     path('hotel/delete/<int:id>', delete_hotel, name='delete'),
 
 ]
