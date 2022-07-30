@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from hotel.views import new_hotel, struttura, hotel_list, delete_hotel
+from hotel.views import new_hotel, struttura, hotel_list, delete_hotel, room
 from home.views import home, search
 
 urlpatterns = [
@@ -29,5 +29,7 @@ urlpatterns = [
     path('struttura/<int:id>/', struttura),
     path('hotel/list', hotel_list, name="hotel_list"),
     path('hotel/delete/<int:id>', delete_hotel, name='delete'),
+    path('hotel/rooms/<int:id>', room, name='rooms'),
+    
 
 ]

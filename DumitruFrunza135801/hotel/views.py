@@ -1,10 +1,10 @@
 from gc import get_objects
 from multiprocessing import context
 from django.shortcuts import render, redirect
-from django.http import HttpResponse,Http404
+from django.http import HttpResponse, Http404
 
-from .forms import HotelForm, RawHotelForm
-from .models import Hotel
+from .forms import HotelForm, RawHotelForm, RoomForm
+from .models import Hotel, Room
 
 # Create your views here.
 def hotel_view(request,*args,**kwargs):
@@ -45,3 +45,16 @@ def new_hotel(request):
             print("Dati non validi")
     context = { "form" : my_form }
     return render(request, 'registra_struttura.html', context )
+
+def room(request, id):
+    my_form = RoomForm()
+    hotel = Hotel.objects.get(id=id)
+    if request.method =='POST':
+        my_form = RoomForm(request.POST)
+        if my_form.is_valid():
+            Room.objects.create(**my_form.cleaned_data, hotel=hotel)
+        else: 
+            print("Data not valid!")
+    rooms_count = range(int(hotel.rooms))
+    context = { "form" : my_form, "rooms_count" : rooms_count }
+    return render(request, 'rooms.html', context) 
