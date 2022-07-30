@@ -39,8 +39,8 @@ def new_hotel(request):
     if request.method == 'POST':
         my_form = RawHotelForm(request.POST)
         if my_form.is_valid():
-            Hotel.objects.create(**my_form.cleaned_data)
-            return redirect('/hotel/list')
+            hotel = Hotel.objects.create(**my_form.cleaned_data)
+            return redirect('/hotel/rooms/' + str(hotel.id))
         else:
             print("Dati non validi")
     context = { "form" : my_form }
@@ -53,6 +53,7 @@ def room(request, id):
         my_form = RoomForm(request.POST)
         if my_form.is_valid():
             Room.objects.create(**my_form.cleaned_data, hotel=hotel)
+            return redirect('/hotel/list')
         else: 
             print("Data not valid!")
     rooms_count = range(int(hotel.rooms))
